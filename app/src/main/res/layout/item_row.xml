@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginBottom="16dp"
+    android:layout_gravity="center"
+    android:background="@color/card"
+    app:cardCornerRadius="8dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/card"
+        android:padding="16dp" >
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_marginEnd="16dp"
+            android:id="@+id/avatar_git"
+            tools:src="@android:color/darker_gray"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:id="@+id/git_user_name"
+                tools:text="Username"
+                android:textColor="@color/white"
+                android:fontFamily="@font/product_sans_bold" />
+
+            <TextView
+                android:id="@+id/git_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:textSize="12sp"
+                android:fontFamily="@font/product_sans"
+                android:textColor="@color/white"
+                tools:text="Nama Asli" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Lokasi"
+                android:textColor="@color/white"
+                android:fontFamily="@font/product_sans"
+                android:textSize="12sp"
+                android:maxLines="1"
+                android:drawablePadding="11dp"
+                android:id="@+id/loc_user"
+                android:layout_marginBottom="2dp"
+                app:drawableLeftCompat="@drawable/ic_location_vec" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Company"
+                android:textColor="@color/white"
+                android:fontFamily="@font/product_sans"
+                android:textSize="12sp"
+                android:drawablePadding="6dp"
+                android:id="@+id/company_user"
+                android:layout_marginBottom="2dp"
+                app:drawableStartCompat="@drawable/ic_company_vec" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
