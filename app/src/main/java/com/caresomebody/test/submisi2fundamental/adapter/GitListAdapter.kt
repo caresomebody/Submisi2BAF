@@ -1,11 +1,12 @@
-package com.caresomebody.test.submisi2fundamental
+package com.caresomebody.test.submisi2fundamental.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewbinding.ViewBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.caresomebody.test.submisi2fundamental.DetailActivity
+import com.caresomebody.test.submisi2fundamental.GitUser
 import com.caresomebody.test.submisi2fundamental.databinding.ItemRowBinding
 import org.jetbrains.anko.startActivity
 
@@ -26,10 +27,6 @@ class GitListAdapter : RecyclerView.Adapter<GitListAdapter.ListViewHolder>() {
                         .apply(RequestOptions())
                         .into(avatarGit)
                 gitUserName.text = gitUser.username
-                gitName.text = gitUser.name
-                locUser.text = gitUser.location
-                companyUser.text = gitUser.company
-
             }
         }
     }
@@ -42,7 +39,7 @@ class GitListAdapter : RecyclerView.Adapter<GitListAdapter.ListViewHolder>() {
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         holder.bind(listData[position])
         holder.itemView.setOnClickListener{
-            it.context.startActivity<DetailActivity>("git" to listData[position])
+            it.context.startActivity<DetailActivity>("git" to listData[position].username)
         }
     }
 

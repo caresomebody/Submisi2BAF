@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Pengguna GitHub</string>
+    <string name="following">Mengikuti</string>
+    <string name="followers">Pengikut</string>
+    <string name="tab_text_1">Mengikuti</string>
+    <string name="tab_text_2">Pengikut</string>
+    <string name="search">Car</string>
+    <string name="search_hint">Cari Pengguna</string>
+    <string name="change_language_settings">Ubah Pengaturan Bahasa</string>
+    <string name="find_github_user">Cari Pengguna Github!</string>
+    <string name="icon_lokasi">Ikon Lokasi</string>
+    <string name="company_icon">Ikon Perusahaan</string>
+    <string name="repo_icon">Ikon Repo</string>
+</resources>

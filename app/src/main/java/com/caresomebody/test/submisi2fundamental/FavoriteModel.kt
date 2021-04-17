@@ -4,7 +4,8 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class GitUser(
+data class FavoriteModel(
+        var id: Int = 0,
         var name: String = "",
         var username: String = "",
         var company: String = "",
@@ -12,5 +13,5 @@ data class GitUser(
         var repository: Int = 0,
         var followers: Int = 0,
         var following: Int = 0,
-        var avatar: String = ""
+        var avatar: String? = ""
 ) : Parcelable

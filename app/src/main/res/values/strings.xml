@@ -1,7 +1,16 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">GitHub User</string>
     <string name="following">Following</string>
     <string name="followers">Followers</string>
     <string name="tab_text_1">Following</string>
     <string name="tab_text_2">Followers</string>
+    <string name="search">Search</string>
+    <string name="search_hint">Search User</string>
+    <string name="change_language_settings">Change Language Settings</string>
+    <string name="find_github_user">Find Github User!</string>
+    <string name="icon_lokasi">Location Icon</string>
+    <string name="company_icon">Company Icon</string>
+    <string name="repo_icon">Repo Icon</string>
+    <string name="favorite">Favorite</string>
+    <string name="settings">Settings</string>
 </resources>
