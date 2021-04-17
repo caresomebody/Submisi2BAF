@@ -27,21 +27,25 @@ class FavoriteUser : AppCompatActivity() {
         setContentView(binding.root)
         binding.rvGit.setHasFixedSize(true)
         showRecyclerList()
-        //loadUserAsync()
-//        if (savedInstanceState == null) {
-//            loadUserAsync()
-//        } else {
-//            val list = savedInstanceState.getParcelableArrayList<FavoriteModel>(EXTRA_STATE)
-//            if (list != null) {
-//                adapter.listUser = list
-//            }
-//        }
+        supportActionBar?.title = "Favorit User"
+        loadUserAsync()
+        if (savedInstanceState == null) {
+            loadUserAsync()
+        } else {
+            val list = savedInstanceState.getParcelableArrayList<FavoriteModel>(EXTRA_STATE)
+            if (list != null) {
+                adapter.listUser = list
+            }
+        }
+    }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelableArrayList(EXTRA_STATE, adapter.listUser)
     }
 
     private fun showRecyclerList(){
         binding.rvGit.layoutManager = LinearLayoutManager(this)
-
         adapter = FavoriteAdapter()
         adapter.notifyDataSetChanged()
         binding.rvGit.adapter = adapter
@@ -56,7 +60,7 @@ class FavoriteUser : AppCompatActivity() {
                 val cursor = userHelper.queryAll()
                 MappingHelper.mapCursorToArrayList(cursor)
             }
-            userHelper.close()
+            //userHelper.close()
             binding.progressBar.visibility = View.INVISIBLE
             val user = deferredUser.await()
             if (user.size > 0){
