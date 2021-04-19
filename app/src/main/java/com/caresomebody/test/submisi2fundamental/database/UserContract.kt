@@ -11,11 +11,12 @@ internal class UserContract {
     internal class UserColumns : BaseColumns{
         companion object{
             const val TABLE_NAME = "FavoriteUser"
-            const val COLUMN_NAME_ID = "id"
-            const val COLUMN_NAME_USERNAME = "username"
-            const val COLUMN_NAME_AVATAR = "avatar_url"
-            const val COLUMN_NAME_COMPANY = "company"
-            const val COLUMN_NAME_LOCATION = "location"
+            const val ID = "id"
+            const val USERNAME = "username"
+            const val AVATAR = "avatar_url"
+            const val COMPANY = "company"
+            const val LOCATION = "location"
+
             val CONTENT_URI: Uri = Uri.Builder().scheme(SCHEME)
                 .authority(AUTHORITY)
                 .appendPath(TABLE_NAME)

@@ -9,11 +9,24 @@ object MappingHelper {
             val favList = ArrayList<FavoriteModel>()
             favCursor?.apply {
                 while (moveToNext()) {
-                    val id = getInt(getColumnIndexOrThrow(UserContract.UserColumns.COLUMN_NAME_ID))
-                    val username = getString(getColumnIndexOrThrow(UserContract.UserColumns.COLUMN_NAME_USERNAME))
-                    favList.add(FavoriteModel(id, username))
+                    val id = getInt(getColumnIndexOrThrow(UserContract.UserColumns.ID))
+                    val username = getString(getColumnIndexOrThrow(UserContract.UserColumns.USERNAME))
+                    val avatar = getString(getColumnIndexOrThrow(UserContract.UserColumns.AVATAR))
+                    favList.add(FavoriteModel(id, username, avatar))
                 }
             }
             return favList
         }
+
+    fun mapCursorToObject(favCursor: Cursor?): FavoriteModel {
+        var userFavorit = FavoriteModel()
+        favCursor?.apply {
+            moveToFirst()
+            val id = getInt(getColumnIndexOrThrow(UserContract.UserColumns.ID))
+            val username = getString(getColumnIndexOrThrow(UserContract.UserColumns.USERNAME))
+            val avatar = getString(getColumnIndexOrThrow(UserContract.UserColumns.AVATAR))
+            userFavorit = FavoriteModel(id, username, avatar)
+        }
+        return userFavorit
+    }
 }

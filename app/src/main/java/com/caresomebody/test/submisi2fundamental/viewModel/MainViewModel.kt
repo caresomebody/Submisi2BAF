@@ -37,7 +37,7 @@ class MainViewModel(): ViewModel() {
                     }
                     listUser.postValue(gitUser)
                 } catch (e: Exception) {
-                    Log.d("Exception", e.message.toString())
+                    Log.d("Exception Main View", e.message.toString())
                     e.printStackTrace()
                 }
             }

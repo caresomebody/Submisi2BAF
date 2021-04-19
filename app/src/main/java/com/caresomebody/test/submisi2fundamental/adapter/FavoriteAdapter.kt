@@ -47,19 +47,19 @@ class FavoriteAdapter: RecyclerView.Adapter<FavoriteAdapter.UserViewHolder>() {
         }
     }
 
-    fun addItem(list : FavoriteModel) {
-        this.listUser.add(list)
-        notifyItemInserted(this.listUser.size - 1)
-    }
-
-    fun updateItem(position: Int, list: FavoriteModel) {
-        this.listUser[position] = list
-        notifyItemChanged(position, list)
-    }
-
-    fun removeItem(position: Int) {
-        this.listUser.removeAt(position)
-        notifyItemRemoved(position)
-        notifyItemRangeChanged(position, this.listUser.size)
-    }
+//    fun addItem(list : FavoriteModel) {
+//        this.listUser.add(list)
+//        notifyItemInserted(this.listUser.size - 1)
+//    }
+//
+//    fun updateItem(position: Int, list: FavoriteModel) {
+//        this.listUser[position] = list
+//        notifyItemChanged(position, list)
+//    }
+//
+//    fun removeItem(position: Int) {
+//        this.listUser.removeAt(position)
+//        notifyItemRemoved(position)
+//        notifyItemRangeChanged(position, this.listUser.size)
+//    }
 }

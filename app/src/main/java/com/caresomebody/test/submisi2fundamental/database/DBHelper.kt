@@ -10,11 +10,11 @@ class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
         private const val DATABASE_NAME = "dbgituser"
         private const val DATABASE_VERSION = 1
         private const val SQL_CREATE_TABLE_NOTE = "CREATE TABLE $TABLE_NAME" +
-                " (${UserContract.UserColumns.COLUMN_NAME_ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
-                " ${UserContract.UserColumns.COLUMN_NAME_USERNAME} TEXT NOT NULL," +
-                " ${UserContract.UserColumns.COLUMN_NAME_AVATAR} TEXT NOT NULL," +
-                " ${UserContract.UserColumns.COLUMN_NAME_COMPANY} TEXT NOT NULL," +
-                " ${UserContract.UserColumns.COLUMN_NAME_LOCATION} TEXT NOT NULL)"
+                " (${UserContract.UserColumns.ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
+                " ${UserContract.UserColumns.USERNAME} TEXT NOT NULL," +
+                " ${UserContract.UserColumns.AVATAR} TEXT NOT NULL," +
+                " ${UserContract.UserColumns.COMPANY} TEXT NOT NULL," +
+                " ${UserContract.UserColumns.LOCATION} TEXT NOT NULL)"
     }
 
     override fun onCreate(db: SQLiteDatabase) {

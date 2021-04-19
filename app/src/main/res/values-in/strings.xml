@@ -12,4 +12,15 @@
     <string name="icon_lokasi">Ikon Lokasi</string>
     <string name="company_icon">Ikon Perusahaan</string>
     <string name="repo_icon">Ikon Repo</string>
+    <string name="favorite">Favorit</string>
+    <string name="settings">Pengaturan</string>
+    <string name="on">Nyalakan Alarm</string>
+    <string name="off">Matikan Alarm</string>
+    <string name="notif_message">Kembali ke Aplikasi</string>
+    <string name="time_alarm">09:00</string>
+    <string name="alarm_type">Repeat GitUser Alarm</string>
+    <string name="cancel_alarm">Repeating Alarm Dibatalkan</string>
+    <string name="alarm_set_up">Repeating alarm Dinyalakan</string>
+    <string name="setting_alarm">Nyalakan Alarm</string>
+    <string name="notif_title">Kembali ke Aplikasi</string>
 </resources>

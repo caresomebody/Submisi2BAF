@@ -15,6 +15,7 @@ class DetailViewModel: ViewModel() {
     val userDetail = MutableLiveData<GitUser>()
     private val listFollowing = MutableLiveData<ArrayList<GitUser>>()
     private val listFollowers = MutableLiveData<ArrayList<GitUser>>()
+    val git = GitUser()
 
     fun setUserDetail (user: String?){
         val url = "https://api.github.com/users/$user"
@@ -26,7 +27,6 @@ class DetailViewModel: ViewModel() {
                 try {
                     val result = String(responseBody)
                     val responseObject = JSONObject(result)
-                    val git = GitUser()
                     git.username = responseObject.getString("login")
                     git.name = responseObject.getString("name")
                     git.location = responseObject.getString("location")
@@ -35,7 +35,7 @@ class DetailViewModel: ViewModel() {
                     git.avatar = responseObject.getString("avatar_url")
                     userDetail.postValue(git)
                 } catch (e: Exception) {
-                    Log.d("Exception", e.message.toString())
+                    Log.d("Exception Set User", e.message.toString())
                     e.printStackTrace()
                 }
             }
@@ -68,7 +68,7 @@ class DetailViewModel: ViewModel() {
                     }
                     listFollowing.postValue(gitUser)
                 } catch (e: Exception) {
-                    Log.d("Exception", e.message.toString())
+                    Log.d("Exception Set Following", e.message.toString())
                     e.printStackTrace()
                 }
             }
@@ -101,7 +101,7 @@ class DetailViewModel: ViewModel() {
                     }
                     listFollowers.postValue(gitUser)
                 } catch (e: Exception) {
-                    Log.d("Exception", e.message.toString())
+                    Log.d("Exception Set Followers", e.message.toString())
                     e.printStackTrace()
                 }
             }

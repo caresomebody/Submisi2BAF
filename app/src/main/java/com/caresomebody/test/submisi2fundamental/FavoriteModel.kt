@@ -5,13 +5,9 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class FavoriteModel(
-        var id: Int = 0,
-        var name: String = "",
+        var id: Int? = 0,
         var username: String = "",
+        var avatar: String = "",
         var company: String = "",
-        var location: String = "",
-        var repository: Int = 0,
-        var followers: Int = 0,
-        var following: Int = 0,
-        var avatar: String? = ""
+        var location: String = ""
 ) : Parcelable
