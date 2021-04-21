@@ -6,13 +6,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.caresomebody.test.submisi2fundamental.DetailActivity
-import com.caresomebody.test.submisi2fundamental.FavoriteModel
+import com.caresomebody.test.submisi2fundamental.data.FavoriteData
 import com.caresomebody.test.submisi2fundamental.databinding.ItemRowBinding
 import org.jetbrains.anko.startActivity
 
 class FavoriteAdapter: RecyclerView.Adapter<FavoriteAdapter.UserViewHolder>() {
 
-    var listUser = ArrayList<FavoriteModel>()
+    var listUser = ArrayList<FavoriteData>()
     set(listUser){
         if (listUser.size > 0){
             this.listUser.clear()
@@ -36,7 +36,7 @@ class FavoriteAdapter: RecyclerView.Adapter<FavoriteAdapter.UserViewHolder>() {
     override fun getItemCount(): Int = this.listUser.size
 
     class UserViewHolder(private val binding: ItemRowBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(gitUser: FavoriteModel){
+        fun bind(gitUser: FavoriteData){
             with(binding){
                 Glide.with(itemView.context)
                         .load(gitUser.avatar)

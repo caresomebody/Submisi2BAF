@@ -1,10 +1,11 @@
-package com.caresomebody.test.submisi2fundamental
+package com.caresomebody.test.submisi2fundamental.data
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class GitUser(
+        var id: Int = 0,
         var name: String = "",
         var username: String = "",
         var company: String = "",

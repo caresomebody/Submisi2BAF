@@ -1,4 +1,4 @@
-package com.caresomebody.test.submisi2fundamental
+package com.caresomebody.test.submisi2fundamental.alarm
 
 import android.app.AlarmManager
 import android.app.NotificationChannel
@@ -12,6 +12,7 @@ import android.os.Build
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
+import com.caresomebody.test.submisi2fundamental.R
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*

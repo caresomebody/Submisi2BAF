@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -69,7 +68,7 @@ class MainActivity : AppCompatActivity() {
 
         if (item.itemId == R.id.favorite_menu) {
             toast("berhasil diklik")
-            val mIntent = Intent(this, FavoriteUser::class.java)
+            val mIntent = Intent(this, FavoriteUserActivity::class.java)
             startActivity(mIntent)
         }
         return super.onOptionsItemSelected(item)

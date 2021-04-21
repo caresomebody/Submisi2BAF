@@ -1,2 +1,3 @@
+include ':consumerapp'
 include ':app'
 rootProject.name = "Submisi 2 Fundamental"

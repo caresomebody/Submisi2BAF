@@ -1,7 +1,7 @@
 package com.caresomebody.test.submisi2fundamental.preference
 
 import android.content.Context
-import com.caresomebody.test.submisi2fundamental.Reminder
+import com.caresomebody.test.submisi2fundamental.alarm.Reminder
 
 class ReminderPref(context: Context) {
     companion object{
@@ -16,7 +16,7 @@ class ReminderPref(context: Context) {
         editor.apply()
     }
 
-    fun getReminder(): Reminder{
+    fun getReminder(): Reminder {
         val reminder = Reminder()
         reminder.isReminded = preference.getBoolean(REMINDER, false)
         return reminder

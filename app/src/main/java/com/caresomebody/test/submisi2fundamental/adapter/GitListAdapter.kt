@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.caresomebody.test.submisi2fundamental.DetailActivity
-import com.caresomebody.test.submisi2fundamental.GitUser
+import com.caresomebody.test.submisi2fundamental.data.GitUser
 import com.caresomebody.test.submisi2fundamental.databinding.ItemRowBinding
 import org.jetbrains.anko.startActivity
 

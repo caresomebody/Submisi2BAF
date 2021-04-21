@@ -1,20 +1,21 @@
-package com.caresomebody.test.submisi2fundamental
+package com.caresomebody.test.consumerapp
 
+import android.database.ContentObserver
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.HandlerThread
 import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.caresomebody.test.submisi2fundamental.adapter.FavoriteAdapter
-import com.caresomebody.test.submisi2fundamental.database.UserHelper
-import com.caresomebody.test.submisi2fundamental.databinding.ActivityFavoriteUserBinding
-import com.caresomebody.test.submisi2fundamental.helper.MappingHelper
+import com.caresomebody.test.consumerapp.GitUserContract.UserColumns.Companion.CONTENT_URI
+import com.caresomebody.test.consumerapp.databinding.ActivityFavoriteUserBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
-class FavoriteUser : AppCompatActivity() {
+class FavoriteUserActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFavoriteUserBinding
     private lateinit var adapter: FavoriteAdapter
 
@@ -28,8 +29,18 @@ class FavoriteUser : AppCompatActivity() {
         setContentView(binding.root)
         binding.rvGit.setHasFixedSize(true)
         showRecyclerList()
-        supportActionBar?.title = "Favorit User"
-        loadUserAsync()
+        supportActionBar?.title = "Consumer Favorite User"
+
+        val handlerThread = HandlerThread("DataObserver")
+        handlerThread.start()
+        val handler = Handler(handlerThread.looper)
+
+        val myObserver = object : ContentObserver(handler) {
+            override fun onChange(self: Boolean) {
+                loadUserAsync()
+            }
+        }
+        contentResolver.registerContentObserver(CONTENT_URI, true, myObserver)
         if (savedInstanceState == null) {
             loadUserAsync()
         } else {
@@ -55,13 +66,10 @@ class FavoriteUser : AppCompatActivity() {
     private fun loadUserAsync(){
         GlobalScope.launch(Dispatchers.Main) {
             binding.progressBar.visibility = View.VISIBLE
-            val userHelper = UserHelper.getInstance(applicationContext)
-            userHelper.open()
             val deferredUser = async(Dispatchers.IO){
-                val cursor = userHelper.queryAll()
+                val cursor = contentResolver.query(CONTENT_URI, null, null, null, null)
                 MappingHelper.mapCursorToArrayList(cursor)
             }
-            //userHelper.close()
             binding.progressBar.visibility = View.INVISIBLE
             val user = deferredUser.await()
             Log.d("ini user dari favuser", user.toString())

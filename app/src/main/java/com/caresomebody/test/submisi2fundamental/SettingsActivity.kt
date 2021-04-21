@@ -5,9 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
+import com.caresomebody.test.submisi2fundamental.alarm.AlarmReceiver
+import com.caresomebody.test.submisi2fundamental.alarm.Reminder
 import com.caresomebody.test.submisi2fundamental.databinding.ActivitySettingsBinding
 import com.caresomebody.test.submisi2fundamental.preference.ReminderPref
-import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivitySettingsBinding
