@@ -10,7 +10,7 @@ class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
         private const val DATABASE_NAME = "dbgituser"
         private const val DATABASE_VERSION = 1
         private const val SQL_CREATE_TABLE_NOTE = "CREATE TABLE $TABLE_NAME" +
-                " (${GitUserContract.UserColumns.ID} TEXT NOT NULL," +
+                " (${GitUserContract.UserColumns.ID} TEXT NOT NULL UNIQUE," +
                 " ${GitUserContract.UserColumns.USERNAME} TEXT NOT NULL," +
                 " ${GitUserContract.UserColumns.AVATAR} TEXT NOT NULL," +
                 " ${GitUserContract.UserColumns.COMPANY} TEXT NOT NULL," +

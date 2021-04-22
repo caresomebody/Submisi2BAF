@@ -28,7 +28,6 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.item_row.*
 import org.jetbrains.anko.toast
-import kotlin.math.log
 
 class DetailActivity : AppCompatActivity() {
 
@@ -76,6 +75,7 @@ class DetailActivity : AppCompatActivity() {
                 locUser.text = it.location
             }
             git.id = it.id
+            checkFav()
             Log.d("ini userid", git.id.toString())
             git.username = it.username
             git.avatar = it.avatar
@@ -86,7 +86,6 @@ class DetailActivity : AppCompatActivity() {
 
         gitUserHelper = GitUserHelper.getInstance(applicationContext)
         gitUserHelper.open()
-        //checkFav()
 
         val sectionsPagerAdapter = SectionsPagerAdapter(this,data)
         val viewPager: ViewPager2 = binding.viewPager
@@ -128,13 +127,19 @@ class DetailActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-//    private fun checkFav() {
-//        val cursor: Cursor = gitUserHelper.queryById(git.id.toString())
-//        if (cursor.moveToNext()) {
-//            statusFav = true
-//            setFavStatus(true)
-//        }
-//    }
+    private fun checkFav() {
+        uriWithId = Uri.parse(CONTENT_URI.toString() + "/" + git.id)
+        Log.d("ini uriid", uriWithId.toString())
+        Log.d("ini gitid", git.id.toString())
+        val cursor = contentResolver.query(uriWithId, null, null, null, null)
+        val myFavorites = MappingHelper.mapCursorToArrayList(cursor)
+        for (data in myFavorites) {
+            if (git.id == data.id) {
+                menu.getItem(0).icon = ContextCompat.getDrawable(this,R.drawable.ic_favorite_fill_24)
+                statusFav = true
+            }
+        }
+    }
 
     private fun setFavStatus(statusFav: Boolean){
         if (statusFav) {
@@ -164,7 +169,6 @@ class DetailActivity : AppCompatActivity() {
             Log.d("ini id useradd =", git.id.toString())
             statusFav = true
             contentResolver.insert(CONTENT_URI, values)
-            //git.id = contentResolver
         }
     }
 
