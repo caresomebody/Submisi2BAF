@@ -67,7 +67,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         if (item.itemId == R.id.favorite_menu) {
-            toast("berhasil diklik")
             val mIntent = Intent(this, FavoriteUserActivity::class.java)
             startActivity(mIntent)
         }

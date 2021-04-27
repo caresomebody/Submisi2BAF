@@ -17,16 +17,4 @@ object MappingHelper {
             }
             return favList
         }
-
-    fun mapCursorToObject(favCursor: Cursor?): FavoriteData {
-        var userFavorit = FavoriteData()
-        favCursor?.apply {
-            moveToFirst()
-            val id = getInt(getColumnIndexOrThrow(GitUserContract.UserColumns.ID))
-            val username = getString(getColumnIndexOrThrow(GitUserContract.UserColumns.USERNAME))
-            val avatar = getString(getColumnIndexOrThrow(GitUserContract.UserColumns.AVATAR))
-            userFavorit = FavoriteData(id, username, avatar)
-        }
-        return userFavorit
-    }
 }

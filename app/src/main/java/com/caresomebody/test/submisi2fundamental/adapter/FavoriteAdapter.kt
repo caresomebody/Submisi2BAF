@@ -11,7 +11,7 @@ import com.caresomebody.test.submisi2fundamental.databinding.ItemRowBinding
 import org.jetbrains.anko.startActivity
 
 class FavoriteAdapter: RecyclerView.Adapter<FavoriteAdapter.UserViewHolder>() {
-
+    private lateinit var deleteListener: ((FavoriteData, Int) -> Unit)
     var listUser = ArrayList<FavoriteData>()
     set(listUser){
         if (listUser.size > 0){
@@ -47,19 +47,7 @@ class FavoriteAdapter: RecyclerView.Adapter<FavoriteAdapter.UserViewHolder>() {
         }
     }
 
-//    fun addItem(list : FavoriteModel) {
-//        this.listUser.add(list)
-//        notifyItemInserted(this.listUser.size - 1)
-//    }
-//
-//    fun updateItem(position: Int, list: FavoriteModel) {
-//        this.listUser[position] = list
-//        notifyItemChanged(position, list)
-//    }
-//
-//    fun removeItem(position: Int) {
-//        this.listUser.removeAt(position)
-//        notifyItemRemoved(position)
-//        notifyItemRangeChanged(position, this.listUser.size)
-//    }
+    fun setOnDeleteListener(listener: (FavoriteData, Int) -> Unit) {
+        deleteListener = listener
+    }
 }

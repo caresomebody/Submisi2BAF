@@ -1,9 +1,7 @@
 package com.caresomebody.test.submisi2fundamental
 
 import android.content.ContentValues
-import android.database.Cursor
 import android.net.Uri
-import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -17,7 +15,6 @@ import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.caresomebody.test.submisi2fundamental.adapter.SectionsPagerAdapter
 import com.caresomebody.test.submisi2fundamental.data.FavoriteData
-import com.caresomebody.test.submisi2fundamental.database.DBHelper
 import com.caresomebody.test.submisi2fundamental.database.GitUserContract
 import com.caresomebody.test.submisi2fundamental.database.GitUserContract.UserColumns.Companion.CONTENT_URI
 import com.caresomebody.test.submisi2fundamental.database.GitUserHelper
@@ -33,15 +30,11 @@ class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
     private lateinit var detailViewModel: DetailViewModel
-    private var favoriteData : FavoriteData? = null
     private lateinit var menu : Menu
-    private var dbHelper = DBHelper(this)
-    private lateinit var db : SQLiteDatabase
     private lateinit var gitUserHelper : GitUserHelper
     private lateinit var uriWithId: Uri
-    var git = FavoriteData()
-    var statusFav = false
-    var position: Int = 0
+    private var git = FavoriteData()
+    private var statusFav = false
     private var data: String? = null
 
 
@@ -51,8 +44,6 @@ class DetailActivity : AppCompatActivity() {
             R.string.tab_text_1,
             R.string.tab_text_2
         )
-        const val EXTRA_FAV = "extra_FAV"
-        const val EXTRA_POS= "extra_pos"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,7 +67,6 @@ class DetailActivity : AppCompatActivity() {
             }
             git.id = it.id
             checkFav()
-            Log.d("ini userid", git.id.toString())
             git.username = it.username
             git.avatar = it.avatar
             git.company = it.company
@@ -101,36 +91,18 @@ class DetailActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         this.menu = menu
         menuInflater.inflate(R.menu.favorite, menu)
-//        if (statusFav) {
-//            menu.getItem(0).icon = ContextCompat.getDrawable(this,R.drawable.ic_favorite_border_24)
-//        }
-//        else {
-//            menu.getItem(0).icon = ContextCompat.getDrawable(this,R.drawable.ic_favorite_fill_24)
-//        }
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.favorite_menu) {
             setFavStatus(statusFav)
-//            if (statusFav) {
-//                userAdd()
-//                menu.getItem(0).icon = ContextCompat.getDrawable(this,R.drawable.ic_favorite_border_24)
-//                toast("Remove From Favorite")
-//            }
-//            else {
-//                userAdd()
-//                menu.getItem(0).icon = ContextCompat.getDrawable(this,R.drawable.ic_favorite_fill_24)
-//                toast("Added to Favorite")
-//            }
         }
         return super.onOptionsItemSelected(item)
     }
 
     private fun checkFav() {
         uriWithId = Uri.parse(CONTENT_URI.toString() + "/" + git.id)
-        Log.d("ini uriid", uriWithId.toString())
-        Log.d("ini gitid", git.id.toString())
         val cursor = contentResolver.query(uriWithId, null, null, null, null)
         val myFavorites = MappingHelper.mapCursorToArrayList(cursor)
         for (data in myFavorites) {
@@ -158,7 +130,6 @@ class DetailActivity : AppCompatActivity() {
         if (statusFav){
             statusFav = false
             gitUserHelper.deleteById(git.id.toString())
-            Log.d("ini id user =", git.id.toString())
         } else {
             val values = ContentValues()
             values.put(GitUserContract.UserColumns.ID, git.id)
@@ -166,7 +137,6 @@ class DetailActivity : AppCompatActivity() {
             values.put(GitUserContract.UserColumns.AVATAR, git.avatar)
             values.put(GitUserContract.UserColumns.COMPANY, git.company)
             values.put(GitUserContract.UserColumns.LOCATION, git.location)
-            Log.d("ini id useradd =", git.id.toString())
             statusFav = true
             contentResolver.insert(CONTENT_URI, values)
         }

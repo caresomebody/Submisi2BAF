@@ -11,7 +11,7 @@ internal class GitUserContract {
     internal class UserColumns : BaseColumns{
         companion object{
             const val TABLE_NAME = "FavoriteUser"
-            const val ID = "id"
+            const val ID = "_id"
             const val USERNAME = "username"
             const val AVATAR = "avatar_url"
 

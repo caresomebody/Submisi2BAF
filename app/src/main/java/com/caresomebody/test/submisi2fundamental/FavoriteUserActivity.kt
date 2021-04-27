@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
-import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.caresomebody.test.submisi2fundamental.adapter.FavoriteAdapter
@@ -79,7 +78,6 @@ class FavoriteUserActivity : AppCompatActivity() {
             userHelper.close()
             binding.progressBar.visibility = View.INVISIBLE
             val user = deferredUser.await()
-            Log.d("ini user dari favuser", user.toString())
             if (user.size > 0){
                 adapter.listUser = user
             } else {
